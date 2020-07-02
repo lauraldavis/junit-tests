@@ -10,8 +10,6 @@ public class Student {
     private String name;
     private List<Integer> grades;
 
-    public Student() {}
-
     public Student(long id, String name) {
         this.id = id;
         this.name = name;
@@ -43,9 +41,6 @@ public class Student {
         return grades;
     }
     public void addGrade(int grade) {
-        if (this.grades == null) {
-            this.grades = new ArrayList<Integer>();
-        }
         grades.add(grade);
     }
 
@@ -54,7 +49,7 @@ public class Student {
             this.grades.set(index, grade);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(index + " is an invalid index, adding grade instead.");
-            addGrade(grade);
+//            addGrade(grade);
         }
     }
 
