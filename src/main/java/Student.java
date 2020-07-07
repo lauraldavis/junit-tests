@@ -64,10 +64,10 @@ public class Student {
 
     public double getGradeAverage() {
         double allGrades = 0;
-        for(Integer i : this.getGrades()){
-            allGrades += i;
+        for(int grade : grades){
+            allGrades += grade;
         }
-        double gradeAverage = allGrades/this.grades.size();
+        double gradeAverage = allGrades/grades.size();
         DecimalFormat df = new DecimalFormat("0.##");
         return parseDouble(df.format(gradeAverage));
     }

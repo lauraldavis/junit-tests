@@ -42,17 +42,12 @@ public class CohortTest {
     @Test
     public void testGetStudents() {
         assertTrue(io.getStudents().isEmpty());
-        // s2
+        // s1
         assertEquals(1, hyperion.getStudents().size());
         assertEquals("Somebody", hyperion.getStudents().get(0).getName());
-        // s3
+        // s2
         assertEquals(2, ganymede.getStudents().size());
         assertEquals("Somebody Else", ganymede.getStudents().get(0).getName());
-        assertEquals(3L, ganymede.getStudents().get(1).getId());
-//        assertEquals(90, ganymede.getStudents().get(0).getGrades().get(0));
-        Student s4 = new Student(4L, "Someone Else New");
-        ganymede.addStudent(s4);
-        assertEquals(3, ganymede.getStudents().size());
     }
 
     @Test
@@ -74,11 +69,15 @@ public class CohortTest {
 
         Student s4 = new Student(4L, "Someone Else New");
         ganymede.addStudent(s4);
-        s4.addGrade(10);
-        s4.addGrade(45);
-        ganymede.addStudent(s4);
-        // 90, {85, 95}, {10, 50}
-//        assertEquals(70, ganymede.getCohortAverage(), 1);
+        s4.addGrade(0);
+        // 90, {85, 95}, 0
+        assertEquals(60, ganymede.getCohortAverage(), 1);
     }
 
+    @Test
+    public void testFindStudentById(){
+        assertSame(hyperion.getStudents().get(0), hyperion.findStudentById(1L));
+        assertSame(ganymede.findStudentById(2L), ganymede.getStudents().get(0));
+        assertSame(ganymede.findStudentById(3L), ganymede.getStudents().get(1));
+    }
 }

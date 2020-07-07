@@ -22,6 +22,7 @@ public class StudentTest {
     }
 
     // The Student class should have a constructor that sets both the name and id property, it initializes the grades property as an empty ArrayList
+    @Test
     public void testInitialProperties() {
         Student student = new Student(3L, "John");
         assertEquals(3L, student.getId());
